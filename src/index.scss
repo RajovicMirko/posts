@@ -4,6 +4,8 @@
   --primary-color: rgb(0, 76, 126);
   --primary-contrast-color: white;
   --gray-light-color: rgb(252, 252, 252);
+  --gray-element-bg-color: rgb(243, 243, 243);
+  --gray-subelement-bg-color: rgb(235, 235, 235);
 }
 
 body {
@@ -12,11 +14,11 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--gray-light-color);
 }
 
 .container {
   padding: 0 1rem;
-  width: 100%;
 }
 
 @media (min-width: 512px) {

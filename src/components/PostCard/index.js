@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PostCard = ({ post }) => (
-  <Link to={post.id.toString()} className="post-card">
+  <Link to={`/posts/${post.id.toString()}`} className="post-card">
     <span className="title">{post.title}</span>
     <p className="desc">{post.body.slice(0, 100)}...</p>
     <span className="link">

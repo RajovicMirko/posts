@@ -1,0 +1,33 @@
+.pagination {
+  font-size: 0.8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & * {
+    padding: 0 0.3rem;
+    cursor: pointer;
+  }
+
+  & i {
+    font-size: 0.5rem;
+    margin: 0 0.5rem;
+
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  & span {
+    color: rgb(141, 141, 141);
+    border-bottom: 3px solid rgba(255, 255, 255, 0);
+    line-height: 1.4;
+
+    &.active {
+      border-bottom: 3px solid var(--primary-color);
+      pointer-events: none;
+    }
+  }
+}

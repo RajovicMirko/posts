@@ -11,8 +11,9 @@ function Posts() {
     body:
       "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet",
   };
+
   return (
-    <Layout>
+    <Layout headerTitle="Posts found: 11">
       <div className="container">
         <section className="posts-page">
           <section className="controls">

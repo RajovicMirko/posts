@@ -1,0 +1,13 @@
+.layout {
+  & header {
+    background-color: var(--primary-color);
+    color: var(--primary-contrast-color);
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+
+    & .title {
+      font-size: 4rem;
+    }
+  }
+}

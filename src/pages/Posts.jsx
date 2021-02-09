@@ -1,10 +1,11 @@
 import React from "react";
+import Layout from "components/Layout";
 
 function Posts() {
   return (
-    <div>
+    <Layout>
       <h1>Posts page</h1>
-    </div>
+    </Layout>
   );
 }
 

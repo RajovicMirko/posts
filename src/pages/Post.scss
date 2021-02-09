@@ -29,6 +29,12 @@
     & span {
       font-size: 0.73rem;
       color: var(--gray-text-mid-light-color);
+      cursor: pointer;
+
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
     }
   }
 

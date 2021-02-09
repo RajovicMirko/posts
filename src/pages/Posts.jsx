@@ -64,14 +64,12 @@ function Posts(props) {
 
           <section className="posts">{postsCards}</section>
 
-          {filteredPosts.length >= perPage && (
-            <Pagination
-              dataLength={posts.length}
-              perPage={perPage}
-              currentPage={currentPage}
-              onClick={handlePagination}
-            />
-          )}
+          <Pagination
+            dataLength={posts.length}
+            perPage={perPage}
+            currentPage={currentPage}
+            onClick={handlePagination}
+          />
         </section>
       </div>
     </Layout>

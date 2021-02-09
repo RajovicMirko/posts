@@ -1,18 +1,5 @@
 const initState = {
-  posts: [
-    {
-      id: "1",
-      title: "Test post 1",
-      body:
-        "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet",
-    },
-    {
-      id: "2",
-      title: "Test post 2",
-      body:
-        "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet",
-    },
-  ],
+  posts: [],
 };
 
 const posts = (state = initState, action) => {

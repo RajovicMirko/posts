@@ -1,59 +1,137 @@
 import "pages/Post.scss";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
-function Post() {
-  return (
-    <div className="post">
-      <div className="container title">
-        <span className="title">Post title</span>
-      </div>
+import { generateClassFromObject } from "utils/helpers";
 
-      <hr />
+import Loading from "components/Loading";
 
-      <div className="container">
-        <div className="text">
-          lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem
-          ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem
-          ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem
-          ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem ipsum, lorem
-          ipsum, lorem ipsum,{" "}
-        </div>
-      </div>
+// ACTIONS
+import { getPosts } from "store/actions/posts";
+import { getPost } from "store/actions/post";
 
-      <hr />
+function Post(props) {
+  const {
+    history,
+    posts,
+    getPosts,
+    getPost,
+    isLoading,
+    post,
+    user,
+    comments,
+    previousId,
+    nextId,
+  } = props;
 
-      <div className="container">
-        <div className="controls">
-          <span>Previous article</span>
-          <span>Next article</span>
-        </div>
+  const [currentPostId, setCurrentPostId] = useState(props.match.params.id);
 
-        <div className="autor">
-          <span>
-            <small>Autor name</small>
-            <p>John Doe</p>
-          </span>
+  useEffect(() => {
+    if (!posts) getPosts();
+    getPost(currentPostId);
+  }, [currentPostId]);
 
-          <span>
-            <small>Address</small>
-            <p>Test author adress, 123</p>
-          </span>
-        </div>
+  useEffect(() => history.replace(`/posts/${currentPostId}`), [currentPostId]);
 
-        <div className="comments">
-          <span className="sub-title">Comments</span>
-          <div className="comment">
-            <span className="comment-title">Some title</span>
-            <p className="comment-text">
-              Some coment text, Some coment text, Some coment text, Some coment
-              text, Some coment text, Some coment text, Some coment text, Some
-              coment text
-            </p>
-          </div>
-        </div>
-      </div>
+  const userFullAddress = `${user.address.city}, ${user.address.zipcode}, ${user.address.street}`;
+
+  const Comment = ({ comment }) => (
+    <div className="comment">
+      <span className="comment-title">{comment.name}</span>
+      <p className="comment-text">{comment.body} </p>
     </div>
   );
+
+  const handlePrevious = () => setCurrentPostId(previousId);
+  const handleNext = () => setCurrentPostId(nextId);
+
+  const previousClass = {
+    disabled: previousId === null,
+  };
+
+  const nextClass = {
+    disabled: nextId === null,
+  };
+
+  switch (true) {
+    case isLoading:
+      return <Loading text="Loading post..." />;
+    default:
+      return (
+        <div className="post">
+          <div className="container title">
+            <span className="title">{post.title}</span>
+          </div>
+
+          <hr />
+
+          <div className="container">
+            <div className="text">{post.body}</div>
+          </div>
+
+          <hr />
+
+          <div className="container">
+            <div className="controls">
+              <span
+                className={generateClassFromObject(previousClass)}
+                onClick={handlePrevious}
+              >
+                Previous article
+              </span>
+              <span
+                className={generateClassFromObject(nextClass)}
+                onClick={handleNext}
+              >
+                Next article
+              </span>
+            </div>
+
+            <div className="autor">
+              <span>
+                <small>Autor name</small>
+                <p>{user.name}</p>
+              </span>
+
+              <span>
+                <small>Address</small>
+                <p>{userFullAddress}</p>
+              </span>
+            </div>
+
+            <div className="comments">
+              <span className="sub-title">Comments</span>
+              {comments &&
+                comments.map((comment) => (
+                  <Comment key={comment.id} comment={comment} />
+                ))}
+            </div>
+          </div>
+        </div>
+      );
+  }
 }
 
-export default Post;
+const mapStateToProps = (state) => {
+  const { posts } = state.posts;
+  const { post, user, comments, isLoading, previousId, nextId } = state.post;
+
+  return {
+    posts,
+    isLoading,
+    post,
+    user,
+    comments,
+    previousId,
+    nextId,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getPosts: () => dispatch(getPosts()),
+    getPost: (postId) => dispatch(getPost(postId)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

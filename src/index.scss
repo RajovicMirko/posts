@@ -4,8 +4,12 @@
   --primary-color: rgb(0, 76, 126);
   --primary-contrast-color: white;
   --gray-light-color: rgb(252, 252, 252);
-  --gray-element-bg-color: rgb(243, 243, 243);
-  --gray-subelement-bg-color: rgb(235, 235, 235);
+
+  --gray-text-mid-light-color: rgb(48, 48, 48);
+  --gray-text-light-color: rgb(163, 163, 163);
+
+  --gray-element-bg-color: rgb(245, 245, 245);
+  --gray-subelement-bg-color: rgb(239, 239, 239);
 }
 
 body {
@@ -23,12 +27,18 @@ body {
 
 @media (min-width: 512px) {
   .container {
-    padding: 0 3rem;
+    padding: 0 7rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
     padding: 0 5rem;
+  }
+}
+
+@media (min-width: 1340px) {
+  .container {
+    padding: 0 14rem;
   }
 }

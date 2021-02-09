@@ -1,8 +1,16 @@
 import "pages/Posts.scss";
 import React from "react";
+
 import Layout from "components/Layout";
+import PostCard from "components/PostCard";
 
 function Posts() {
+  const post = {
+    id: "1",
+    title: "Test post 1",
+    body:
+      "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet",
+  };
   return (
     <Layout>
       <div className="container">
@@ -14,7 +22,16 @@ function Posts() {
             </select>
           </section>
           <section className="posts">
-            <h1>posts list</h1>
+            <PostCard post={post} />
+            <PostCard post={post} />
+            <PostCard post={post} />
+            <PostCard post={post} />
+            <PostCard post={post} />
+            <PostCard post={post} />
+            <PostCard post={post} />
+            <PostCard post={post} />
+            <PostCard post={post} />
+            <PostCard post={post} />
           </section>
         </section>
       </div>

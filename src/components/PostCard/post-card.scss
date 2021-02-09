@@ -1,0 +1,40 @@
+.post-card {
+  position: absolute;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  background-color: white;
+  border-radius: 0.7rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.02);
+
+  & .title {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--gray-text-mid-light-color);
+  }
+
+  & .desc {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    color: rgb(167, 167, 167);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: var(--gray-text-light-color);
+  }
+
+  & .link {
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--gray-text-mid-light-color);
+
+    & i {
+      font-size: 0.6rem;
+      margin-left: 0.5rem;
+    }
+  }
+}
